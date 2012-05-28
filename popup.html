@@ -73,6 +73,12 @@
 
 		<script type="text/javascript">
 			(function($) {
+				// Reload message
+				$('small.remove').hide();
+				setTimeout(function() {
+					$('small.remove').fadeIn();
+				}, 2000);
+				
 				opera.extension.onmessage = function(e) {
 						var url         = e.data.url,
 							textLoading = e.data.textLoading,
@@ -81,12 +87,6 @@
 						// Locales
 						$('span.remove').html(textLoading);
 						$('small.remove').html(textReload);
-
-						// Reload message
-						$('small.remove').hide();
-						setTimeout(function() {
-							$('small.remove').fadeIn();
-						}, 2000);
 
 						// QRCode
 						$('.qrcode').empty().qrcode({
