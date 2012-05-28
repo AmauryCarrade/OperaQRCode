@@ -15,6 +15,11 @@ window.addEventListener("load", function(){
 
     opera.extension.onconnect = function(event) {
         var thisTab = opera.extension.tabs.getFocused();
-        event.source.postMessage(thisTab.url + '%%%%%%%%' + loading);
-    }
+        event.source.postMessage({
+            url:         thisTab.url, 
+            textLoading: loading,
+            textReload:  reload
+        });
+    };
+
 }, false);

@@ -30,9 +30,10 @@
 	</head>
 	<body>
 		<div class="qrcode">
-			<span>Loading QRCode...</span>
+			<span class="remove">Loading QRCode...</span>
+			<small class="remove">No QRCode? Try to reload this page.</small>
 		</div>
-		<small title=""></small>
+		<small title="" id="URL"></small>
 
 		<script type="text/javascript">
 			/*! jQuery v1.7.1 jquery.com | jquery.org/license */
@@ -73,31 +74,37 @@
 		<script type="text/javascript">
 			(function($) {
 				opera.extension.onmessage = function(e) {
-					var data = e.data.split('%%%%%%%%');
-					var url         = data[0],
-						loadingText = data[1];
+						var url         = e.data.url,
+							textLoading = e.data.textLoading,
+							textReload  = e.data.textReload;
 
-					// Locales
-					$('span').text(loadingText);
+						// Locales
+						$('span.remove').html(textLoading);
+						$('small.remove').html(textReload);
 
-					// QRCode
-					$('.qrcode').qrcode({
-						text: url,
-						width: 250,
-						height: 250
-					});
-					$('span').remove();
+						// Reload message
+						$('small.remove').hide();
+						setTimeout(function() {
+							$('small.remove').fadeIn();
+						}, 2000);
 
-					var small = url,
-						title = null;
+						// QRCode
+						$('.qrcode').empty().qrcode({
+							text: url,
+							width: 250,
+							height: 250
+						});
 
-					if(small.length > 48) {
-						title = url;
-						small = small.substring(0, 45) + '...';
+						var small = url,
+							title = null;
+
+						if(small.length > 48) {
+							title = url;
+							small = small.substring(0, 45) + '...';
+						}
+						$('#URL').text(small);
+						$('#URL').attr('title', title);
 					}
-					$('small').text(small);
-					$('small').attr('title', title);
-				}
 			})(jQuery);
 		</script>
 	</body>
