@@ -15,11 +15,16 @@
 				margin-top: 10px;
 			}
 			.qrcode {
+				display: block;
 				width: 250px;
 				height: 250px;
 				margin: auto;
 				text-align: center;
 				border: solid transparent;
+			}
+			.qrcode.nolink {
+				text-decoration: none;
+				cursor: default;
 			}
 			.qrcode span {
 				color: #999999;
@@ -29,10 +34,10 @@
 		</style>
 	</head>
 	<body>
-		<div class="qrcode">
+		<a class="qrcode nolink" href="#">
 			<span class="remove">Loading QRCode...</span>
 			<small class="remove">No QRCode? Try to reload this page.</small>
-		</div>
+		</a>
 		<small title="" id="URL"></small>
 
 		<script type="text/javascript">
@@ -80,19 +85,23 @@
 				}, 2000);
 				
 				opera.extension.onmessage = function(e) {
-						var url         = e.data.url,
-							textLoading = e.data.textLoading,
-							textReload  = e.data.textReload;
+						var url = e.data.url;
+
+						var GoogleChartAPIQRCodeURL = 'https://chart.googleapis.com/chart?cht=qr&chs=250x250&chld=L|0&chl=' + encodeURIComponent(url);
 
 						// Locales
-						$('span.remove').html(textLoading);
-						$('small.remove').html(textReload);
+						$('span.remove').html(e.data.textLoading);
+						$('small.remove').html(e.data.textReload);
+
 
 						// QRCode
-						$('.qrcode').empty().qrcode({
+						$('.qrcode').empty().removeClass('nolink').qrcode({
 							text: url,
 							width: 250,
 							height: 250
+						}).attr({
+							'href': GoogleChartAPIQRCodeURL,
+							'title': e.data.textDownload
 						});
 
 						var small = url,

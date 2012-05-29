@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="http://webnel.org/perso/projects/opera/qrcode.html" defaultlocale="en" version="1.1">
+<widget xmlns="http://www.w3.org/ns/widgets" id="http://webnel.org/perso/projects/opera/qrcode.html" defaultlocale="en" version="1.2">
 	
 	<name xml:lang="en" short="QRCode"><![CDATA[QRCode Generator]]></name>
 	<name xml:lang="fr" short="QRCode"><![CDATA[Générateur de QRCode]]></name>
@@ -7,10 +7,12 @@
 	<description xml:lang="en"><![CDATA[
 		This plugin simply generates a QRCode of the currently viewed page in a popup.
 		Hence, you can quickly transfert a webpage from your computer to your smartphone, for example.
+		You can also download the generated QRCode as an image, just by clicking on the QRCode.
 	]]></description>
 	<description xml:lang="fr"><![CDATA[
 		Ce plugin génère simplement un QRCode de la page actuellement affichée dans une fenêtre popup. 
 		Ainsi, vous pouvez rapidement transférer une page web depuis votre ordinateur vers votre téléphone, par exemple.
+		Vous pouvez également télécharger le QRCode généré en cliquant sur le QRCode.
 	]]></description>
 
   	<author href="http://webnel.org/perso/" email="amaury.carrade@free.fr">Amaury Carrade</author>

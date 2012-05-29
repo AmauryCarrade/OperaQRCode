@@ -18,7 +18,8 @@ window.addEventListener("load", function(){
         event.source.postMessage({
             url:         thisTab.url, 
             textLoading: loading,
-            textReload:  reload
+            textReload:  reload,
+            textDownload: download
         });
     };
 
