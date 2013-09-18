@@ -1,7 +1,7 @@
 What's that?
 ============
 
-This is an add-on for Opera browser who shows a QRCode of the current page in a popup. 
+This is an add-on for Opera browser which shows a QRCode of the current page in a popup. 
 Then, you can quickly transfer a webpage from your browser to your smartphone, for example.
 
 License
